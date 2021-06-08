@@ -2,6 +2,11 @@
 
 {% block title %}Hello BatchController!{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('datepicker') }}
+{% endblock %}
+
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -9,6 +14,8 @@
 </style>
 
 <div class="example-wrapper">
+    {% include 'batch/flash_messages.html.twig' %}
+    <h3>Passport Form</h3><br>
     {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
     <div class="card">
         <div class="card-body">
@@ -21,6 +28,7 @@
                     {{ form_row(form.issueYear) }}
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     {{ form_row(form.expirationYear) }}
@@ -30,6 +38,7 @@
                     {{ form_row(form.height) }}
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     {{ form_row(form.hairColor) }}
@@ -39,6 +48,7 @@
                     {{ form_row(form.eyeColor) }}
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     {{ form_row(form.passportId) }}
@@ -50,11 +60,16 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" type="submit" value="Save">Search</button>
+                    <button class="btn btn-primary" type="submit" value="Save">Validate</button>
                 </div>
             </div>
         </div>
     </div>
     {{ form_end(form) }}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('datepicker') }}
 {% endblock %}

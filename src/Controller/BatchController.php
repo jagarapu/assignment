@@ -21,8 +21,10 @@ class BatchController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $this->addFlash('success', 'Passport valid!');
             return $this->redirectToRoute('batch_search');
+        } else {
+            $this->addFlash('success', 'Invalid passport');
         }
 
         return $this->render('batch/index.html.twig', [
